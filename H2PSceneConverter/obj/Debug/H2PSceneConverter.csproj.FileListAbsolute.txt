@@ -1,0 +1,10 @@
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\bin\Debug\H2PSceneConverter.exe
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\bin\Debug\H2PSceneConverter.pdb
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\bin\Debug\CommandLine.dll
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\bin\Debug\CommandLine.xml
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\obj\Debug\H2PSceneConverter.csproj.CoreCompileInputs.cache
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\obj\Debug\H2PSceneConverter.csproj.CopyComplete
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\obj\Debug\H2PSceneConverter.exe
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\obj\Debug\H2PSceneConverter.pdb
+D:\Projects\Illusion\H2PSceneConverter\H2PSceneConverter\obj\Debug\H2PSceneConverter.csprojAssemblyReference.cache

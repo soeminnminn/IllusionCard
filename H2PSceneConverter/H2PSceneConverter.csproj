@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: D:\Games\Illusion\PlayHome\Plugins\H2PSceneConverter.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F135D552-3A84-4A6C-AA62-532A270DFC29}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>H2PSceneConverter</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.1.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>H2PConverter</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine">
+      <HintPath>..\refrences\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\refrences\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CharacterPH\AccessoryCustom.cs" />
+    <Compile Include="CharacterPH\AccessoryData.cs" />
+    <Compile Include="CharacterPH\AccessoryParameter.cs" />
+    <Compile Include="CharacterPH\BodyParameter.cs" />
+    <Compile Include="CharacterPH\ColorParameter_Alloy.cs" />
+    <Compile Include="CharacterPH\ColorParameter_AlloyHSVOffset.cs" />
+    <Compile Include="CharacterPH\ColorParameter_Base.cs" />
+    <Compile Include="CharacterPH\ColorParameter_EyeHighlight.cs" />
+    <Compile Include="CharacterPH\ColorParameter_Hair.cs" />
+    <Compile Include="CharacterPH\ColorParameter_PBR1.cs" />
+    <Compile Include="CharacterPH\ColorParameter_PBR2.cs" />
+    <Compile Include="CharacterPH\CustomParameter.cs" />
+    <Compile Include="CharacterPH\Enumeration.cs" />
+    <Compile Include="CharacterPH\HairParameter.cs" />
+    <Compile Include="CharacterPH\HairPartParameter.cs" />
+    <Compile Include="CharacterPH\HeadParameter.cs" />
+    <Compile Include="CharacterPH\ParameterBase.cs" />
+    <Compile Include="CharacterPH\WearCustom.cs" />
+    <Compile Include="CharacterPH\WearParameter.cs" />
+    <Compile Include="Converter.cs" />
+    <Compile Include="Common\HsvColor.cs" />
+    <Compile Include="Common\HSColorSet.cs" />
+    <Compile Include="Common\CharSave_SexyBeachPR.cs" />
+    <Compile Include="Common\MathfEx.cs" />
+    <Compile Include="Common\PngAssist.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveAssist\BlockHeader.cs" />
+    <Compile Include="CharacterHS\BlockControlBase.cs" />
+    <Compile Include="CharacterHS\CharDefine.cs" />
+    <Compile Include="CharacterHS\CharFemaleFile.cs" />
+    <Compile Include="CharacterHS\CharFile.cs" />
+    <Compile Include="CharacterHS\CharFileInfoClothes.cs" />
+    <Compile Include="CharacterHS\CharFileInfoClothesFemale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoClothesMale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoCoordinate.cs" />
+    <Compile Include="CharacterHS\CharFileInfoCoordinateFemale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoCoordinateMale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoCustom.cs" />
+    <Compile Include="CharacterHS\CharFileInfoCustomFemale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoCustomMale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoParameter.cs" />
+    <Compile Include="CharacterHS\CharFileInfoParameterFemale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoParameterMale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoPreview.cs" />
+    <Compile Include="CharacterHS\CharFileInfoStatus.cs" />
+    <Compile Include="CharacterHS\CharFileInfoStatusFemale.cs" />
+    <Compile Include="CharacterHS\CharFileInfoStatusMale.cs" />
+    <Compile Include="CharacterHS\CharMaleFile.cs" />
+    <Compile Include="CharacterHS\YS_Assist.cs" />
+    <Compile Include="DeepCopy\DeepCopyHelper.cs" />
+    <Compile Include="DeepCopy\DeepCopyUtils.cs" />
+    <Compile Include="StudioPH\BGMCtrl.cs" />
+    <Compile Include="StudioPH\CameraControl.cs" />
+    <Compile Include="StudioPH\ChangeAmount.cs" />
+    <Compile Include="StudioPH\CharFileStatus.cs" />
+    <Compile Include="StudioPH\ENVCtrl.cs" />
+    <Compile Include="StudioPH\LookAtTargetInfo.cs" />
+    <Compile Include="StudioPH\ObjectInfo.cs" />
+    <Compile Include="StudioPH\ObjectInfoAssist.cs" />
+    <Compile Include="StudioPH\OIBoneInfo.cs" />
+    <Compile Include="StudioPH\OICharInfo.cs" />
+    <Compile Include="StudioPH\OIFolderInfo.cs" />
+    <Compile Include="StudioPH\OIIKTargetInfo.cs" />
+    <Compile Include="StudioPH\OIItemInfo.cs" />
+    <Compile Include="StudioPH\OILightInfo.cs" />
+    <Compile Include="StudioPH\OutsideSoundCtrl.cs" />
+    <Compile Include="StudioPH\SceneInfo.cs" />
+    <Compile Include="StudioHS\BGMCtrl.cs" />
+    <Compile Include="StudioHS\CameraControl.cs" />
+    <Compile Include="StudioHS\ChangeAmount.cs" />
+    <Compile Include="StudioHS\ENVCtrl.cs" />
+    <Compile Include="StudioHS\LookAtTargetInfo.cs" />
+    <Compile Include="StudioHS\ObjectInfo.cs" />
+    <Compile Include="StudioHS\ObjectInfoAssist.cs" />
+    <Compile Include="StudioHS\OIBoneInfo.cs" />
+    <Compile Include="StudioHS\OICharInfo.cs" />
+    <Compile Include="StudioHS\OIFolderInfo.cs" />
+    <Compile Include="StudioHS\OIIKTargetInfo.cs" />
+    <Compile Include="StudioHS\OIItemInfo.cs" />
+    <Compile Include="StudioHS\OILightInfo.cs" />
+    <Compile Include="StudioHS\OIPathMoveInfo.cs" />
+    <Compile Include="StudioHS\OIPointInfo.cs" />
+    <Compile Include="StudioHS\OutsideSoundCtrl.cs" />
+    <Compile Include="StudioHS\SceneInfo.cs" />
+    <Compile Include="StudioHS\TreeNodeObject.cs" />
+    <Compile Include="StudioHS\VoiceCtrl.cs" />
+    <Compile Include="StudioPH\Studio.cs" />
+    <Compile Include="StudioPH\TreeNodeObject.cs" />
+    <Compile Include="StudioPH\VoiceCtrl.cs" />
+    <Compile Include="Common\UserData.cs" />
+    <Compile Include="Common\Utility.cs" />
+    <Compile Include="UnityEngine\Color.cs" />
+    <Compile Include="UnityEngine\ColorUtility.cs" />
+    <Compile Include="UnityEngine\Debug.cs" />
+    <Compile Include="UnityEngine\JsonUtility.cs" />
+    <Compile Include="UnityEngine\Mathf.cs" />
+    <Compile Include="UnityEngine\Quaternion.cs" />
+    <Compile Include="UnityEngine\Vector2.cs" />
+    <Compile Include="UnityEngine\Vector3.cs" />
+    <Compile Include="UnityEngine\Vector4.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MaleForH2PConverter.png" />
+    <EmbeddedResource Include="Resources\UesugiForH2PConverter.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
