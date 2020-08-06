@@ -6,12 +6,12 @@ namespace StudioNeoV2
 {
     public class VoiceCtrl
     {
-        public List<VoiceCtrl.VoiceInfo> list = new List<VoiceCtrl.VoiceInfo>();
+        public List<VoiceInfo> list = new List<VoiceInfo>();
         public int index = -1;
         public const string savePath = "studio/voicelist";
         public const string saveExtension = ".dat";
         public const string saveIdentifyingCode = "【voice】";
-        public VoiceCtrl.Repeat repeat;
+        public Repeat repeat;
 
         public void Save(BinaryWriter _writer, Version _version)
         {
@@ -19,7 +19,7 @@ namespace StudioNeoV2
             _writer.Write(count);
             for (int index = 0; index < count; ++index)
             {
-                VoiceCtrl.VoiceInfo voiceInfo = this.list[index];
+                VoiceInfo voiceInfo = this.list[index];
                 _writer.Write(voiceInfo.group);
                 _writer.Write(voiceInfo.category);
                 _writer.Write(voiceInfo.no);
@@ -35,9 +35,9 @@ namespace StudioNeoV2
                 int _group = _reader.ReadInt32();
                 int _category = _reader.ReadInt32();
                 int _no = _reader.ReadInt32();
-                this.list.Add(new VoiceCtrl.VoiceInfo(_group, _category, _no));
+                this.list.Add(new VoiceInfo(_group, _category, _no));
             }
-            this.repeat = (VoiceCtrl.Repeat)_reader.ReadInt32();
+            this.repeat = (Repeat)_reader.ReadInt32();
         }
 
         public class VoiceInfo

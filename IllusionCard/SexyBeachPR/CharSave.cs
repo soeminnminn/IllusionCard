@@ -116,7 +116,7 @@ namespace SexyBeachPR
             if (charClothesInstance != null)
                 buffer2 = charClothesInstance.SaveBytes();
             byte[] numArray1 = null;
-            CharSave.PreviewInfo previewInfo = new CharSave.PreviewInfo();
+            PreviewInfo previewInfo = new PreviewInfo();
             previewInfo.Sex = charBody.Sex;
             previewInfo.Name = charCustomInstance.name;
             if (previewInfo.Sex == 0)
@@ -138,7 +138,7 @@ namespace SexyBeachPR
             byte[] buffer3 = previewInfo.SaveBytes();
             int length = 4;
             writer.Write(length);
-            long num = writer.BaseStream.Position + CharSave.BlockInfo.GetBlockInfoSize() * length;
+            long num = writer.BaseStream.Position + BlockInfo.GetBlockInfoSize() * length;
             string[] strArray = new string[4]
             {
               "プレビュー情報",
@@ -161,10 +161,10 @@ namespace SexyBeachPR
               num + numArray4[0] + numArray4[1],
               num + numArray4[0] + numArray4[1] + numArray4[2]
             };
-            CharSave.BlockInfo[] blockInfoArray = new CharSave.BlockInfo[length];
+            BlockInfo[] blockInfoArray = new BlockInfo[length];
             for (int index = 0; index < length; ++index)
             {
-                blockInfoArray[index] = new CharSave.BlockInfo();
+                blockInfoArray[index] = new BlockInfo();
                 blockInfoArray[index].SetInfo(strArray[index], numArray3[index], numArray5[index], numArray4[index]);
                 blockInfoArray[index].SaveInfo(writer);
             }
@@ -177,8 +177,8 @@ namespace SexyBeachPR
                 writer.Write(buffer1);
             if (numArray4[2] != 0L)
                 writer.Write(buffer2);
-            if (numArray4[3] == 0L)
-                ;
+            //if (numArray4[3] == 0L)
+            //    ;
             writer.Write(position1);
             writer.Write(position2);
             return true;
@@ -208,10 +208,10 @@ namespace SexyBeachPR
             if (this.LoadCharaFileVersion > 1)
                 return false;
             int length = reader.ReadInt32();
-            CharSave.BlockInfo[] blockInfoArray = new CharSave.BlockInfo[length];
+            BlockInfo[] blockInfoArray = new BlockInfo[length];
             for (int index = 0; index < length; ++index)
             {
-                blockInfoArray[index] = new CharSave.BlockInfo();
+                blockInfoArray[index] = new BlockInfo();
                 blockInfoArray[index].LoadInfo(reader);
             }
             int index1 = 0;
@@ -248,13 +248,13 @@ namespace SexyBeachPR
             return true;
         }
 
-        public static CharSave.PreviewInfo LoadPreviewInfo(string filepath, byte sex)
+        public static PreviewInfo LoadPreviewInfo(string filepath, byte sex)
         {
             int ver = 0;
-            byte[] data = CharSave.LoadCharaBlockData(filepath, 0, sex, ref ver);
+            byte[] data = LoadCharaBlockData(filepath, 0, sex, ref ver);
             if (data == null)
                 return null;
-            CharSave.PreviewInfo previewInfo = new CharSave.PreviewInfo();
+            PreviewInfo previewInfo = new PreviewInfo();
             previewInfo.LoadBytes(data, ver);
             return previewInfo;
         }
@@ -264,13 +264,13 @@ namespace SexyBeachPR
             if (!File.Exists(filepath))
                 return null;
             using (FileStream fileStream = new FileStream(filepath, FileMode.Open, FileAccess.Read))
-                return CharSave.LoadCharaBlockData(fileStream, blockId, sex, ref ver);
+                return LoadCharaBlockData(fileStream, blockId, sex, ref ver);
         }
 
         public static byte[] LoadCharaBlockData(Stream st, int blockId, byte sex, ref int ver)
         {
             using (BinaryReader reader = new BinaryReader(st))
-                return CharSave.LoadCharaBlockData(reader, blockId, sex, ref ver);
+                return LoadCharaBlockData(reader, blockId, sex, ref ver);
         }
 
         public static byte[] LoadCharaBlockData(BinaryReader reader, int blockId, byte sex, ref int ver)
@@ -284,10 +284,10 @@ namespace SexyBeachPR
             if (reader.ReadInt32() > 1)
                 return null;
             int length = reader.ReadInt32();
-            CharSave.BlockInfo[] blockInfoArray = new CharSave.BlockInfo[length];
+            BlockInfo[] blockInfoArray = new BlockInfo[length];
             for (int index = 0; index < length; ++index)
             {
-                blockInfoArray[index] = new CharSave.BlockInfo();
+                blockInfoArray[index] = new BlockInfo();
                 blockInfoArray[index].LoadInfo(reader);
             }
             string[] strArray = new string[4]
@@ -297,23 +297,23 @@ namespace SexyBeachPR
               "服装データ",
               "顔画像データ"
             };
-            int[] numArray = new int[4] { 1, 5, 2, 100 };
-            int index1 = -1;
-            for (int index2 = 0; index2 < blockInfoArray.Length; ++index2)
+            int[] blockIdArray = new int[4] { 1, 5, 2, 100 };
+            int indoIndex = -1;
+            for (int index = 0; index < blockInfoArray.Length; ++index)
             {
-                if (blockInfoArray[index2].tagName.StartsWith(strArray[blockId]))
+                if (blockInfoArray[index].tagName.StartsWith(strArray[blockId]))
                 {
-                    index1 = index2;
+                    indoIndex = index;
                     break;
                 }
             }
-            if (index1 == -1)
+            if (indoIndex == -1)
                 return null;
-            if (blockInfoArray[index1].version > numArray[blockId])
+            if (blockInfoArray[indoIndex].version > blockIdArray[blockId])
                 return null;
-            ver = blockInfoArray[index1].version;
-            reader.BaseStream.Seek(blockInfoArray[index1].pos, SeekOrigin.Begin);
-            return reader.ReadBytes((int)blockInfoArray[index1].size);
+            ver = blockInfoArray[indoIndex].version;
+            reader.BaseStream.Seek(blockInfoArray[indoIndex].pos, SeekOrigin.Begin);
+            return reader.ReadBytes((int)blockInfoArray[indoIndex].size);
         }
 
         public class BlockInfo
@@ -328,7 +328,7 @@ namespace SexyBeachPR
             public void SetInfo(string _tagName, int _version, long _pos, long _size)
             {
                 this.tagName = _tagName;
-                this.tag = CharSave.BlockInfo.ChangeStringToByte(this.tagName);
+                this.tag = ChangeStringToByte(this.tagName);
                 this.version = _version;
                 this.pos = _pos;
                 this.size = _size;
@@ -348,7 +348,7 @@ namespace SexyBeachPR
             public bool LoadInfo(BinaryReader reader)
             {
                 this.tag = reader.ReadBytes(tagSize);
-                this.tagName = CharSave.BlockInfo.ChangeByteToString(this.tag);
+                this.tagName = ChangeByteToString(this.tag);
                 this.version = reader.ReadInt32();
                 this.pos = reader.ReadInt64();
                 this.size = reader.ReadInt64();

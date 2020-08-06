@@ -115,6 +115,7 @@
     <Compile Include="CharacterHS\CharFileInfoStatusFemale.cs" />
     <Compile Include="CharacterHS\CharFileInfoStatusMale.cs" />
     <Compile Include="CharacterHS\CharMaleFile.cs" />
+    <Compile Include="Common\TreeNodeObject.cs" />
     <Compile Include="Common\YS_Assist.cs" />
     <Compile Include="CharacterPH\AccessoryCustom.cs" />
     <Compile Include="CharacterPH\AccessoryData.cs" />
@@ -183,7 +184,6 @@
     <Compile Include="StudioHS\OIPointInfo.cs" />
     <Compile Include="StudioHS\OutsideSoundCtrl.cs" />
     <Compile Include="StudioHS\SceneInfo.cs" />
-    <Compile Include="StudioHS\TreeNodeObject.cs" />
     <Compile Include="StudioHS\VoiceCtrl.cs" />
     <Compile Include="StudioNeoV2\BackgroundListAssist.cs" />
     <Compile Include="StudioNeoV2\BGMCtrl.cs" />
@@ -212,7 +212,6 @@
     <Compile Include="StudioNeoV2\ScreenEffectDefine.cs" />
     <Compile Include="StudioNeoV2\Studio.cs" />
     <Compile Include="StudioNeoV2\StudioTween.cs" />
-    <Compile Include="StudioNeoV2\TreeNodeObject.cs" />
     <Compile Include="StudioNeoV2\VoiceCtrl.cs" />
     <Compile Include="StudioPH\BGMCtrl.cs" />
     <Compile Include="StudioPH\CameraControl.cs" />
@@ -231,7 +230,6 @@
     <Compile Include="StudioPH\OutsideSoundCtrl.cs" />
     <Compile Include="StudioPH\SceneInfo.cs" />
     <Compile Include="StudioPH\Studio.cs" />
-    <Compile Include="StudioPH\TreeNodeObject.cs" />
     <Compile Include="StudioPH\VoiceCtrl.cs" />
     <Compile Include="UnityEngine\Color.cs" />
     <Compile Include="UnityEngine\Color32.cs" />

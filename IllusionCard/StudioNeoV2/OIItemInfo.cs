@@ -44,7 +44,7 @@ namespace StudioNeoV2
             get
             {
                 this.DecomposeHDRColor(this.emissionColor, out this.emissionColor32, out this.emissionColorIntensity);
-                return (Color)this.emissionColor32;
+                return emissionColor32;
             }
             set
             {
@@ -63,7 +63,7 @@ namespace StudioNeoV2
             for (int index = 0; index < 4; ++index)
                 this.colors[index].Save(_writer, _version);
             _writer.Write(this.alpha);
-            _writer.Write(JsonUtility.ToJson((object)this.emissionColor));
+            _writer.Write(JsonUtility.ToJson(emissionColor));
             _writer.Write(this.emissionPower);
             _writer.Write(this.lightCancel);
             this.panel.Save(_writer, _version);
@@ -104,16 +104,16 @@ namespace StudioNeoV2
             if (_version.CompareTo(new Version(1, 1, 0)) <= 0 && !string.IsNullOrEmpty(this.panel.filePath))
                 this.panel.filePath = BackgroundListAssist.GetFilePath(this.panel.filePath, false);
             this.enableFK = _reader.ReadBoolean();
-            int num1 = _reader.ReadInt32();
-            for (int index1 = 0; index1 < num1; ++index1)
+            int countBones = _reader.ReadInt32();
+            for (int index = 0; index < countBones; ++index)
             {
-                string index2 = _reader.ReadString();
-                this.bones[index2] = new OIBoneInfo(!_import ? -1 : Studio.GetNewIndex());
-                this.bones[index2].Load(_reader, _version, _import, true);
+                string key = _reader.ReadString();
+                this.bones[key] = new OIBoneInfo(!_import ? -1 : Studio.GetNewIndex());
+                this.bones[key].Load(_reader, _version, _import, true);
             }
             this.enableDynamicBone = _reader.ReadBoolean();
-            int num2 = _reader.ReadInt32();
-            for (int index = 0; index < num2; ++index)
+            int countOption = _reader.ReadInt32();
+            for (int index = 0; index < countOption; ++index)
                 this.option.Add(_reader.ReadBoolean());
             this.animeNormalizedTime = _reader.ReadSingle();
             ObjectInfoAssist.LoadChild(_reader, _version, this.child, _import);
@@ -133,7 +133,7 @@ namespace StudioNeoV2
                 new ColorInfo(),
                 new ColorInfo()
             };
-            this.emissionColor = Utility.ConvertColor((int)byte.MaxValue, (int)byte.MaxValue, (int)byte.MaxValue);
+            this.emissionColor = Utility.ConvertColor(byte.MaxValue, byte.MaxValue, byte.MaxValue);
             this.panel = new PatternInfo();
             this.bones = new Dictionary<string, OIBoneInfo>();
             this.option = new List<bool>();
@@ -142,20 +142,20 @@ namespace StudioNeoV2
 
         internal void DecomposeHDRColor(Color _colorHDR, out Color32 _baseColor, out float _intensity)
         {
-            _baseColor = (Color32)Color.black;
+            _baseColor = Color.black;
             float maxColorComponent = _colorHDR.maxColorComponent;
             byte val1 = 191;
-            if (Mathf.Approximately(maxColorComponent, 0.0f) || (double)maxColorComponent <= 1.0 && (double)maxColorComponent > 0.00392156885936856)
+            if (Mathf.Approximately(maxColorComponent, 0.0f) || maxColorComponent <= 1.0 && maxColorComponent > 0.00392156885936856)
             {
                 _intensity = 0.0f;
-                _baseColor.r = (byte)Mathf.RoundToInt(_colorHDR.r * (float)byte.MaxValue);
-                _baseColor.g = (byte)Mathf.RoundToInt(_colorHDR.g * (float)byte.MaxValue);
-                _baseColor.b = (byte)Mathf.RoundToInt(_colorHDR.b * (float)byte.MaxValue);
+                _baseColor.r = (byte)Mathf.RoundToInt(_colorHDR.r * byte.MaxValue);
+                _baseColor.g = (byte)Mathf.RoundToInt(_colorHDR.g * byte.MaxValue);
+                _baseColor.b = (byte)Mathf.RoundToInt(_colorHDR.b * byte.MaxValue);
             }
             else
             {
-                float num = (float)val1 / maxColorComponent;
-                _intensity = Mathf.Log((float)byte.MaxValue / num) / Mathf.Log(2f);
+                float num = val1 / maxColorComponent;
+                _intensity = Mathf.Log(byte.MaxValue / num) / Mathf.Log(2f);
                 _baseColor.r = Math.Min(val1, (byte)Mathf.CeilToInt(num * _colorHDR.r));
                 _baseColor.g = Math.Min(val1, (byte)Mathf.CeilToInt(num * _colorHDR.g));
                 _baseColor.b = Math.Min(val1, (byte)Mathf.CeilToInt(num * _colorHDR.b));

@@ -7,7 +7,7 @@ namespace StudioNeoV2
     {
         public float speed = 2f;
         public StudioTween.EaseType easeType = StudioTween.EaseType.linear;
-        public OIRoutePointInfo.Connection connection;
+        public Connection connection;
         public OIRoutePointAidInfo aidInfo;
         public bool link;
 
@@ -53,7 +53,7 @@ namespace StudioNeoV2
             base.Load(_reader, _version, _import, false);
             this.speed = _reader.ReadSingle();
             this.easeType = (StudioTween.EaseType)_reader.ReadInt32();
-            this.connection = (OIRoutePointInfo.Connection)_reader.ReadInt32();
+            this.connection = (Connection)_reader.ReadInt32();
             if (this.aidInfo == null)
                 this.aidInfo = new OIRoutePointAidInfo(!_import ? -1 : Studio.GetNewIndex());
             this.aidInfo.Load(_reader, _version, _import, true);

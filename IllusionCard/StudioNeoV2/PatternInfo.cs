@@ -77,11 +77,11 @@ namespace StudioNeoV2
 
         public void Save(BinaryWriter _writer, Version _version)
         {
-            _writer.Write(JsonUtility.ToJson((object)this.color));
+            _writer.Write(JsonUtility.ToJson(color));
             _writer.Write(this.key);
             _writer.Write(this.filePath);
             _writer.Write(this.clamp);
-            _writer.Write(JsonUtility.ToJson((object)this.uv));
+            _writer.Write(JsonUtility.ToJson(uv));
             _writer.Write(this.rot);
         }
 

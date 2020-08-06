@@ -327,22 +327,22 @@ namespace StudioNeoV2
                         switch (num2)
                         {
                             case 0:
-                                objectInfo = (ObjectInfo)new OICharInfo(null, -1);
+                                objectInfo = new OICharInfo(null, -1);
                                 break;
                             case 1:
-                                objectInfo = (ObjectInfo)new OIItemInfo(-1, -1, -1, -1);
+                                objectInfo = new OIItemInfo(-1, -1, -1, -1);
                                 break;
                             case 2:
-                                objectInfo = (ObjectInfo)new OILightInfo(-1, -1);
+                                objectInfo = new OILightInfo(-1, -1);
                                 break;
                             case 3:
-                                objectInfo = (ObjectInfo)new OIFolderInfo(-1);
+                                objectInfo = new OIFolderInfo(-1);
                                 break;
                             case 4:
-                                objectInfo = (ObjectInfo)new OIRouteInfo(-1);
+                                objectInfo = new OIRouteInfo(-1);
                                 break;
                             case 5:
-                                objectInfo = (ObjectInfo)new OICameraInfo(-1);
+                                objectInfo = new OICameraInfo(-1);
                                 break;
                         }
                         objectInfo.Load(binaryReader, this.dataVersion, false, true);
@@ -447,26 +447,26 @@ namespace StudioNeoV2
             {
                 int num2 = _reader.ReadInt32();
                 int num3 = _reader.ReadInt32();
-                ObjectInfo objectInfo = (ObjectInfo)null;
+                ObjectInfo objectInfo = null;
                 switch (num3)
                 {
                     case 0:
-                        objectInfo = (ObjectInfo)new OICharInfo(null, Studio.GetNewIndex());
+                        objectInfo = new OICharInfo(null, Studio.GetNewIndex());
                         break;
                     case 1:
-                        objectInfo = (ObjectInfo)new OIItemInfo(-1, -1, -1, Studio.GetNewIndex());
+                        objectInfo = new OIItemInfo(-1, -1, -1, Studio.GetNewIndex());
                         break;
                     case 2:
-                        objectInfo = (ObjectInfo)new OILightInfo(-1, Studio.GetNewIndex());
+                        objectInfo = new OILightInfo(-1, Studio.GetNewIndex());
                         break;
                     case 3:
-                        objectInfo = (ObjectInfo)new OIFolderInfo(Studio.GetNewIndex());
+                        objectInfo = new OIFolderInfo(Studio.GetNewIndex());
                         break;
                     case 4:
-                        objectInfo = (ObjectInfo)new OIRouteInfo(Studio.GetNewIndex());
+                        objectInfo = new OIRouteInfo(Studio.GetNewIndex());
                         break;
                     case 5:
-                        objectInfo = (ObjectInfo)new OICameraInfo(Studio.GetNewIndex());
+                        objectInfo = new OICameraInfo(Studio.GetNewIndex());
                         break;
                 }
                 objectInfo.Load(_reader, _version, true, true);

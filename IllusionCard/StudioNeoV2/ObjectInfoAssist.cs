@@ -6,11 +6,7 @@ namespace StudioNeoV2
 {
     public static class ObjectInfoAssist
     {
-        public static void LoadChild(
-          BinaryReader _reader,
-          Version _version,
-          List<ObjectInfo> _list,
-          bool _import)
+        public static void LoadChild(BinaryReader _reader, Version _version, List<ObjectInfo> _list, bool _import)
         {
             int num = _reader.ReadInt32();
             for (int index = 0; index < num; ++index)
@@ -48,57 +44,6 @@ namespace StudioNeoV2
                         _list.Add(oiCameraInfo);
                         break;
                 }
-            }
-        }
-
-        private static void FindLoop(ref List<ObjectInfo> _list, ObjectInfo _src, int _kind)
-        {
-            if (_src == null)
-                return;
-            if (_src.kind == _kind)
-                _list.Add(_src);
-            switch (_src.kind)
-            {
-                case 0:
-                    using (Dictionary<int, List<ObjectInfo>>.Enumerator enumerator = (_src as OICharInfo).child.GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            foreach (ObjectInfo _src1 in enumerator.Current.Value)
-                                ObjectInfoAssist.FindLoop(ref _list, _src1, _kind);
-                        }
-                        break;
-                    }
-                case 1:
-                    using (List<ObjectInfo>.Enumerator enumerator = (_src as OIItemInfo).child.GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            ObjectInfo current = enumerator.Current;
-                            ObjectInfoAssist.FindLoop(ref _list, current, _kind);
-                        }
-                        break;
-                    }
-                case 3:
-                    using (List<ObjectInfo>.Enumerator enumerator = (_src as OIFolderInfo).child.GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            ObjectInfo current = enumerator.Current;
-                            ObjectInfoAssist.FindLoop(ref _list, current, _kind);
-                        }
-                        break;
-                    }
-                case 4:
-                    using (List<ObjectInfo>.Enumerator enumerator = (_src as OIRouteInfo).child.GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            ObjectInfo current = enumerator.Current;
-                            ObjectInfoAssist.FindLoop(ref _list, current, _kind);
-                        }
-                        break;
-                    }
             }
         }
     }

@@ -12,7 +12,7 @@ namespace StudioNeoV2
         public bool visibleLine = true;
         public Color color = Color.blue;
         public bool active;
-        public OIRouteInfo.Orient orient;
+        public Orient orient;
 
         public override int kind
         {
@@ -42,7 +42,7 @@ namespace StudioNeoV2
             _writer.Write(this.loop);
             _writer.Write(this.visibleLine);
             _writer.Write((int)this.orient);
-            _writer.Write(JsonUtility.ToJson((object)this.color));
+            _writer.Write(JsonUtility.ToJson(color));
         }
 
         public override void Load(BinaryReader _reader, Version _version, bool _import, bool _tree = true)
@@ -60,7 +60,7 @@ namespace StudioNeoV2
             this.active = _reader.ReadBoolean();
             this.loop = _reader.ReadBoolean();
             this.visibleLine = _reader.ReadBoolean();
-            this.orient = (OIRouteInfo.Orient)_reader.ReadInt32();
+            this.orient = (Orient)_reader.ReadInt32();
             this.color = JsonUtility.FromJson<Color>(_reader.ReadString());
         }
 

@@ -13,21 +13,11 @@ namespace StudioNeoV2
         public bool lipSync = true;
         public bool[] activeIK = new bool[5]
         {
-          true,
-          true,
-          true,
-          true,
-          true
+          true, true, true, true, true
         };
         public bool[] activeFK = new bool[7]
         {
-          false,
-          true,
-          false,
-          true,
-          false,
-          false,
-          false
+          false, true, false, true, false, false, false
         };
         public bool[] expression = new bool[8];
         public float animeSpeed = 1f;
