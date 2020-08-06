@@ -213,6 +213,25 @@
     <Compile Include="StudioNeoV2\Studio.cs" />
     <Compile Include="StudioNeoV2\StudioTween.cs" />
     <Compile Include="StudioNeoV2\VoiceCtrl.cs" />
+    <Compile Include="StudioNeo\BGMCtrl.cs" />
+    <Compile Include="StudioNeo\CameraControl.cs" />
+    <Compile Include="StudioNeo\ChangeAmount.cs" />
+    <Compile Include="StudioNeo\ENVCtrl.cs" />
+    <Compile Include="StudioNeo\LookAtTargetInfo.cs" />
+    <Compile Include="StudioNeo\ObjectInfo.cs" />
+    <Compile Include="StudioNeo\ObjectInfoAssist.cs" />
+    <Compile Include="StudioNeo\OIBoneInfo.cs" />
+    <Compile Include="StudioNeo\OICharInfo.cs" />
+    <Compile Include="StudioNeo\OIFolderInfo.cs" />
+    <Compile Include="StudioNeo\OIIKTargetInfo.cs" />
+    <Compile Include="StudioNeo\OIItemInfo.cs" />
+    <Compile Include="StudioNeo\OILightInfo.cs" />
+    <Compile Include="StudioNeo\OIPathMoveInfo.cs" />
+    <Compile Include="StudioNeo\OIPointInfo.cs" />
+    <Compile Include="StudioNeo\OutsideSoundCtrl.cs" />
+    <Compile Include="StudioNeo\SceneInfo.cs" />
+    <Compile Include="StudioNeo\Studio.cs" />
+    <Compile Include="StudioNeo\VoiceCtrl.cs" />
     <Compile Include="StudioPH\BGMCtrl.cs" />
     <Compile Include="StudioPH\CameraControl.cs" />
     <Compile Include="StudioPH\ChangeAmount.cs" />
@@ -246,8 +265,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="StudioNeo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
