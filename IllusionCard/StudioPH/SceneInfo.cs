@@ -210,16 +210,12 @@ namespace StudioPH
 
         public virtual bool Load(string _path, out Version _dataVersion)
         {
-            Debug.Log("l00");
             using (FileStream fileStream = new FileStream(_path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                Debug.Log("l01");
                 using (BinaryReader _reader = new BinaryReader(fileStream))
                 {
-                    Debug.Log("l02");
                     PngAssist.SkipPng(_reader);
 
-                    Debug.Log("l03");
                     Version _version = new Version(_reader.ReadString());
 
                     int countInfo = _reader.ReadInt32();
@@ -244,13 +240,11 @@ namespace StudioPH
                                 break;
                         }
 
-                        Debug.Log("l04");
                         objectInfo.Load(_reader, _version, false, true);
                         this.dicObject.Add(key, objectInfo);
                         this.hashIndex.Add(key);
                     }
 
-                    Debug.Log("l05");
                     this.map = _reader.ReadInt32();
                     this.caMap.Load(_reader);
 

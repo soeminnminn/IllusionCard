@@ -14,6 +14,7 @@ internal static class Utility
 
     public static Color LoadColor(BinaryReader _reader)
     {
+        // 16
         Color color;
         color.r = _reader.ReadSingle();
         color.g = _reader.ReadSingle();

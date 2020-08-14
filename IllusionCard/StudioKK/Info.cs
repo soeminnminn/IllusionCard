@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Linq;
 
-namespace StudioNeoV2
+namespace StudioKK
 {
     public class Info
     {
@@ -10,14 +9,16 @@ namespace StudioNeoV2
             get => new Info();
         }
 
-        private Info()
+        public int accessoryPointNum
         {
-            AccessoryPointsIndex = Enum.GetValues(typeof(AccessoryPoint)).OfType<int>().ToArray();
+            get
+            {
+                // TODO : Not Implemented
+                return Enum.GetValues(typeof(AccessoryPoint)).Length;
+            }
         }
 
-        public int[] AccessoryPointsIndex { get; private set; }
-
-        public enum AccessoryPoint : int
+        public enum AccessoryPoint
         {
             AP_Head,
             AP_Megane,

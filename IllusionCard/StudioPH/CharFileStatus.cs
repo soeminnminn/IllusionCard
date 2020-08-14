@@ -128,7 +128,7 @@ namespace StudioPH
             this.neckTargetNo = _br.ReadInt32();
             this.neckTargetRate = _br.ReadSingle();
             this.eyesBlink = _br.ReadBoolean();
-            this.disableShapeMouth = _br.ReadBoolean();
+            this.disableShapeMouth = _br.ReadBoolean(); // 67
             this.LoadSub(_br, _version);
 
             if (_version.CompareTo(new Version(0, 1, 4)) < 0)

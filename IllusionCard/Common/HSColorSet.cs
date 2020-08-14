@@ -117,6 +117,7 @@ public class HSColorSet
 
     public void Load(BinaryReader reader, int version)
     {
+        // 72
         this.hsvDiffuse.H = (float)reader.ReadDouble();
         this.hsvDiffuse.S = (float)reader.ReadDouble();
         this.hsvDiffuse.V = (float)reader.ReadDouble();

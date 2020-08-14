@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace IllusionCard
 {
@@ -10,6 +8,13 @@ namespace IllusionCard
     {
         static void Main(string[] args)
         {
+            string filePath = "ph_2020_0125_1542_39_661.png";
+            var studio = new StudioPH.SceneInfo();
+            if (studio.Load(filePath))
+            {
+                System.Diagnostics.Debug.WriteLine("Success");
+            }
+
         }
     }
 }
