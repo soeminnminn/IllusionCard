@@ -8,8 +8,11 @@ namespace IllusionCard
     {
         static void Main(string[] args)
         {
-            string filePath = "ph_2020_0125_1542_39_661.png";
-            var studio = new StudioPH.SceneInfo();
+            string dirPath = @"PlayHome\Cards\scene";
+            string filePath = Path.Combine(dirPath, "1ca38206b0cbb3a3ee816f20bf521f435837115f.png");
+
+            var game = new GameSystem();
+            var studio = game.StudioPH_Instance();
             if (studio.Load(filePath))
             {
                 System.Diagnostics.Debug.WriteLine("Success");

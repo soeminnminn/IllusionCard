@@ -126,7 +126,7 @@ namespace StudioPH
 
         public virtual int CheckNewIndex()
         {
-            for (int index = -1; MathfEx.RangeEqualOn<int>(0, index, int.MaxValue); ++index)
+            for (int index = -1; MathfEx.RangeEqualOn(0, index, int.MaxValue); ++index)
             {
                 if (!this.hashIndex.Contains(index))
                     return index;
