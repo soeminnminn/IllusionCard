@@ -39,18 +39,20 @@ namespace SexyBeachPR
                 this.maleBody = cha as CharMale;
             else
                 this.femaleBody = cha as CharFemale;
-            for (int index1 = 0; index1 < 2; ++index1)
+
+            for (int i = 0; i < 2; ++i)
             {
-                for (int index2 = 0; index2 < 5; ++index2)
+                for (int j = 0; j < 5; ++j)
                 {
-                    this.regAccessory[index1, index2] = new CharAccessory();
-                    this.regAcsColor[index1, index2] = new ColorSet();
+                    this.regAccessory[i, j] = new CharAccessory();
+                    this.regAcsColor[i, j] = new ColorSet();
                 }
             }
-            for (int index = 0; index < 5; ++index)
+            
+            for (int i = 0; i < 5; ++i)
             {
-                this.nowAccessory[index] = new CharAccessory();
-                this.accessoryState[index] = true;
+                this.nowAccessory[i] = new CharAccessory();
+                this.accessoryState[i] = true;
             }
         }
 

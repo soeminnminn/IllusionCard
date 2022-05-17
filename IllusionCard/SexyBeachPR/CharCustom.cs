@@ -61,14 +61,14 @@ namespace SexyBeachPR
             this.bodyBase = cha;
             if (cha.Sex == 0)
             {
-                this.ShapeFaceNum = 67;
-                this.ShapeBodyNum = 21;
+                this.ShapeFaceNum = CharDefine.MaleShepeFaceNum;
+                this.ShapeBodyNum = CharDefine.MaleShepeBodyNum;
                 this.maleBody = cha as CharMale;
             }
             else
             {
-                this.ShapeFaceNum = 67;
-                this.ShapeBodyNum = 32;
+                this.ShapeFaceNum = CharDefine.FemaleShepeFaceNum;
+                this.ShapeBodyNum = CharDefine.FemaleShepeBodyNum;
                 this.femaleBody = cha as CharFemale;
             }
             this.shapeFace = new float[this.ShapeFaceNum];

@@ -20,7 +20,21 @@ public class GameSystem
     }
 
     #region Wrapper
-    public SexyBeachPR.CharSave SexyBeachPR_Instance() => new SexyBeachPR.CharSave();
+    public SexyBeachPR.CharSave SexyBeachPR_Instance(byte sex)
+    {
+        if (sex == 0)
+        {
+            var male = new SexyBeachPR.CharMale();
+            male.Initialize(SexyBeachPR.CharaListInfo.Instance, sex, 0, 0);
+            return male;
+        }
+        else
+        {
+            var female = new SexyBeachPR.CharFemale();
+            female.Initialize(SexyBeachPR.CharaListInfo.Instance, sex, 0, 0);
+            return female;
+        }
+    }
 
     public CharacterPH.CustomParameter CharacterPH_Instance(CharacterPH.SEX sex) => new CharacterPH.CustomParameter(sex);
 

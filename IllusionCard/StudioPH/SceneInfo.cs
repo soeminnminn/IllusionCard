@@ -144,13 +144,13 @@ namespace StudioPH
             this.hashIndex.Remove(_index);
         }
 
-        public virtual bool Save(string _path, byte[] buffer)
+        public virtual bool Save(string _path, byte[] pngData)
         {
             using (FileStream fileStream = new FileStream(_path, FileMode.Create, FileAccess.Write))
             {
                 using (BinaryWriter _writer = new BinaryWriter(fileStream))
                 {
-                    _writer.Write(buffer);
+                    _writer.Write(pngData);
                     _writer.Write(this.m_Version.ToString());
                     this.Save(_writer, this.dicObject);
                     _writer.Write(this.map);
@@ -192,7 +192,7 @@ namespace StudioPH
             return true;
         }
 
-        public virtual void Save(BinaryWriter _writer, Dictionary<int, ObjectInfo> _dicObject)
+        internal virtual void Save(BinaryWriter _writer, Dictionary<int, ObjectInfo> _dicObject)
         {
             int count = _dicObject.Count;
             _writer.Write(count);

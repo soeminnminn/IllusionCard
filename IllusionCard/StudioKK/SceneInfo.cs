@@ -255,7 +255,7 @@ namespace StudioKK
             return true;
         }
 
-        public void Save(BinaryWriter _writer, Dictionary<int, ObjectInfo> _dicObject)
+        internal void Save(BinaryWriter _writer, Dictionary<int, ObjectInfo> _dicObject)
         {
             int count = _dicObject.Count;
             _writer.Write(count);

@@ -45,7 +45,7 @@ namespace AIChara
             this.lastLoadErrorCode = 0;
         }
 
-        protected bool SaveFile(string path, int lang)
+        public bool SaveFile(string path, int lang)
         {
             string directoryName = Path.GetDirectoryName(path);
             if (!Directory.Exists(directoryName))
@@ -55,13 +55,13 @@ namespace AIChara
                 return this.SaveFile(fileStream, true, lang);
         }
 
-        protected bool SaveFile(Stream st, bool savePng, int lang)
+        public bool SaveFile(Stream st, bool savePng, int lang)
         {
             using (BinaryWriter bw = new BinaryWriter(st))
                 return this.SaveFile(bw, savePng, lang);
         }
 
-        protected bool SaveFile(BinaryWriter bw, bool savePng, int lang)
+        public bool SaveFile(BinaryWriter bw, bool savePng, int lang)
         {
             if (savePng && this.pngData != null)
                 bw.Write(this.pngData);
@@ -186,7 +186,7 @@ namespace AIChara
             }
         }
 
-        protected bool LoadFile(string path, int lang, bool noLoadPNG = false, bool noLoadStatus = true)
+        public bool LoadFile(string path, int lang, bool noLoadPNG = false, bool noLoadStatus = true)
         {
             if (!File.Exists(path))
             {
@@ -198,13 +198,13 @@ namespace AIChara
                 return this.LoadFile(fileStream, lang, noLoadPNG, noLoadStatus);
         }
 
-        protected bool LoadFile(Stream st, int lang, bool noLoadPNG = false, bool noLoadStatus = true)
+        public bool LoadFile(Stream st, int lang, bool noLoadPNG = false, bool noLoadStatus = true)
         {
             using (BinaryReader br = new BinaryReader(st))
                 return this.LoadFile(br, lang, noLoadPNG, noLoadStatus);
         }
 
-        protected bool LoadFile(BinaryReader br, int lang, bool noLoadPNG = false, bool noLoadStatus = true)
+        public bool LoadFile(BinaryReader br, int lang, bool noLoadPNG = false, bool noLoadStatus = true)
         {
             long pngSize = PngAssist.CheckSize(br);
             if (pngSize != 0L)

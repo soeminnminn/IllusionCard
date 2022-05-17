@@ -82,7 +82,7 @@ namespace CharacterPH
             this.acce.Save(writer, this.sex);
         }
 
-        public void Load(string file, bool female, bool male)
+        public void Load(string file, bool female = true, bool male = true)
         {
             if (!File.Exists(file))
                 return;
@@ -97,7 +97,7 @@ namespace CharacterPH
             }
         }
 
-        public bool Load(BinaryReader reader, bool female, bool male)
+        public bool Load(BinaryReader reader, bool female = true, bool male = true)
         {
             bool flag = true;
             try

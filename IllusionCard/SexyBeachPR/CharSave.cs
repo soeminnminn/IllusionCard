@@ -17,7 +17,7 @@ namespace SexyBeachPR
 
         public string SaveFileName { get; private set; }
 
-        public byte[] SavePngData { get; private set; }
+        public byte[] SavePngData { get; set; }
 
         public void SetSavePng(byte[] data)
         {
@@ -31,13 +31,13 @@ namespace SexyBeachPR
             this.SavePngData = null;
             if (this.Sex == 0)
             {
-                this.CharaFileDir = "chara/male/";
-                this.CharaFileMark = "【PremiumResortCharaMale】";
+                this.CharaFileDir = CharDefine.CharaFileMaleDir;
+                this.CharaFileMark = CharDefine.CharaFileMaleMark;
             }
             else
             {
-                this.CharaFileDir = "chara/female/";
-                this.CharaFileMark = "【PremiumResortCharaFemale】";
+                this.CharaFileDir = CharDefine.CharaFileFemaleDir;
+                this.CharaFileMark = CharDefine.CharaFileFemaleMark;
             }
         }
 
@@ -214,8 +214,10 @@ namespace SexyBeachPR
                 blockInfoArray[index] = new BlockInfo();
                 blockInfoArray[index].LoadInfo(reader);
             }
+
             int index1 = 0;
             this.LoadPreviewVersion = blockInfoArray[index1].version;
+            
             int index2 = index1 + 1;
             CharCustom charCustomInstance = charBody.GetCharCustomInstance();
             this.LoadCustomVersion = blockInfoArray[index2].version;
@@ -226,12 +228,14 @@ namespace SexyBeachPR
                 if (charCustomInstance == null || !charCustomInstance.LoadBytes(data, blockInfoArray[index2].version))
                     return false;
             }
+            
             if (charBody.Sex != 0)
             {
                 PersonalityIdInfo info = new PersonalityIdInfo();
                 CharaListInfo.Instance.GetPersonalityInfo(charCustomInstance.personality, info);
                 charBody.SetVoiceCorrectValue(info.voiceCorrect);
             }
+            
             int index3 = index2 + 1;
             this.LoadClothesVersion = blockInfoArray[index3].version;
             if (blockInfoArray[index3].version <= 2)
@@ -242,6 +246,7 @@ namespace SexyBeachPR
                 if (charClothesInstance == null || !charClothesInstance.LoadBytes(data, blockInfoArray[index3].version))
                     return false;
             }
+            
             int index4 = index3 + 1;
             long offset = blockInfoArray[index4].pos + blockInfoArray[index4].size;
             reader.BaseStream.Seek(offset, SeekOrigin.Begin);

@@ -36,7 +36,7 @@ namespace CharacterKK
             return this.lastLoadErrorCode;
         }
 
-        protected bool SaveFile(string path)
+        public bool SaveFile(string path)
         {
             string directoryName = Path.GetDirectoryName(path);
             if (!Directory.Exists(directoryName))
@@ -46,13 +46,13 @@ namespace CharacterKK
                 return this.SaveFile(fileStream, true);
         }
 
-        protected bool SaveFile(Stream st, bool savePng)
+        public bool SaveFile(Stream st, bool savePng)
         {
             using (BinaryWriter bw = new BinaryWriter(st))
                 return this.SaveFile(bw, savePng);
         }
 
-        protected bool SaveFile(BinaryWriter bw, bool savePng)
+        public bool SaveFile(BinaryWriter bw, bool savePng)
         {
             if (savePng && this.pngData != null)
                 bw.Write(this.pngData);
@@ -123,7 +123,7 @@ namespace CharacterKK
             return true;
         }
 
-        protected bool LoadFile(string path, bool noLoadPNG = false, bool noLoadStatus = true)
+        public bool LoadFile(string path, bool noLoadPNG = false, bool noLoadStatus = true)
         {
             if (!File.Exists(path))
             {
@@ -135,13 +135,13 @@ namespace CharacterKK
                 return this.LoadFile(fileStream, noLoadPNG, noLoadStatus);
         }
 
-        protected bool LoadFile(Stream st, bool noLoadPNG = false, bool noLoadStatus = true)
+        public bool LoadFile(Stream st, bool noLoadPNG = false, bool noLoadStatus = true)
         {
             using (BinaryReader br = new BinaryReader(st))
                 return this.LoadFile(br, noLoadPNG, noLoadStatus);
         }
 
-        protected bool LoadFile(BinaryReader br, bool noLoadPNG = false, bool noLoadStatus = true)
+        public bool LoadFile(BinaryReader br, bool noLoadPNG = false, bool noLoadStatus = true)
         {
             long pngSize = PngAssist.CheckSize(br);
             if (pngSize != 0L)

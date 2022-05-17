@@ -4,18 +4,18 @@ namespace SexyBeachPR
 {
     public class PersonalityIdInfo
     {
+        private const int min = 7;
         public string Name = string.Empty;
         public bool enableCustom = true;
         public string samplVoice01 = string.Empty;
         public string samplVoice02 = string.Empty;
         public int charId = 14;
-        private const int min = 7;
         public int Id;
         public float voiceCorrect;
 
         public void Set(string[] data)
         {
-            if (data.Length < 7)
+            if (data.Length < min)
                 return;
             this.Id = int.Parse(data[0]);
             this.Name = data[1];

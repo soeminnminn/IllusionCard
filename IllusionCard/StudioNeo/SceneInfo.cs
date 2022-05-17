@@ -177,7 +177,7 @@ namespace StudioNeo
             return true;
         }
 
-        public virtual void Save(BinaryWriter _writer, Dictionary<int, ObjectInfo> _dicObject)
+        internal virtual void Save(BinaryWriter _writer, Dictionary<int, ObjectInfo> _dicObject)
         {
             int count = _dicObject.Count;
             _writer.Write(count);

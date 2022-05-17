@@ -5,11 +5,11 @@ namespace SexyBeachPR
 {
     public class CharIdInfo
     {
+        private const int min = 11;
         public string Name = string.Empty;
         public string DefaultFile = string.Empty;
         public List<string> lstDislikeType = new List<string>();
         public Dictionary<int, List<int>> dictClearCos = new Dictionary<int, List<int>>();
-        private const int min = 11;
         public int Id;
         public int Type;
         public int Love;
@@ -20,7 +20,7 @@ namespace SexyBeachPR
 
         public void Set(string[] data)
         {
-            if (data.Length < 11)
+            if (data.Length < min)
                 return;
             this.Id = int.Parse(data[0]);
             this.Name = data[1];

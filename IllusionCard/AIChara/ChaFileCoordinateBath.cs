@@ -188,23 +188,23 @@ namespace AIChara
             }
         }
 
-        protected void SaveClothes(string path)
+        public void SaveClothes(string path)
         {
             this.SaveFileAssist(path, this.clothes);
         }
 
-        protected void LoadClothes(string path)
+        public void LoadClothes(string path)
         {
             this.LoadFileAssist(path, out this.clothes);
             this.clothes.ComplementWithVersion();
         }
 
-        protected void SaveAccessory(string path)
+        public void SaveAccessory(string path)
         {
             this.SaveFileAssist(path, this.accessory);
         }
 
-        protected void LoadAccessory(string path)
+        public void LoadAccessory(string path)
         {
             this.LoadFileAssist(path, out this.accessory);
             this.accessory.ComplementWithVersion();
