@@ -14,13 +14,17 @@ namespace AIChara
             if (!Directory.Exists(directoryName))
                 Directory.CreateDirectory(directoryName);
             this.charaFileName = Path.GetFileName(path);
-            string userId = this.userID;
+            
+			string userId = this.userID;
             string dataId = this.dataID;
-            if (this.userID != GameSystem.Instance.UserUUID)
+            
+			if (this.userID != GameSystem.Instance.UserUUID)
                 this.dataID = YS_Assist.CreateUUID();
             else if (!File.Exists(path))
                 this.dataID = YS_Assist.CreateUUID();
-            this.userID = GameSystem.Instance.UserUUID;
+            
+			this.userID = GameSystem.Instance.UserUUID;
+			
             using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
             {
                 int num = this.SaveCharaFile(fileStream, true) ? 1 : 0;

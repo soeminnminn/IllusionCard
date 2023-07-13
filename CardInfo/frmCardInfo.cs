@@ -112,6 +112,11 @@ namespace CardInfo
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            pictureBoxScene.Image = null;
+            pictureBoxChara.Image = null;
+            pictureBoxChara.Visible = false;
+            pictureBoxScene.Visible = false;
+
             listView.Items.Clear();
             sourceFiles.Clear();
         }
